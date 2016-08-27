@@ -1,0 +1,24 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "description": "My Portfolio site",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stolksdorf/portfolio.git"
+  },
+  "author": "Scott Tolksdorf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stolksdorf/portfolio/issues"
+  },
+  "homepage": "https://github.com/stolksdorf/portfolio"
+}
