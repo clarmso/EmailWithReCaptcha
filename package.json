@@ -4,7 +4,15 @@
   "description": "My Portfolio site",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.13.1"
+    "browser-sync": "2.14.0",
+    "express": "^4.13.1",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "2.0.12",
+    "gulp-header": "1.8.8",
+    "gulp-less": "3.1.0",
+    "gulp-livereload": "3.8.1",
+    "gulp-rename": "1.2.2",
+    "gulp-uglify": "2.0.0"
   },
   "devDependencies": {},
   "scripts": {
