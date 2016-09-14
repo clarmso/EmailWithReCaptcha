@@ -23,6 +23,10 @@ $(function() {
                 url:'mail/',
                 type: "POST",
                 data: {
+                    from: email,
+                    to: 'clare.m.so@gmail.com',
+                    subject: '[Webform] Message from '+name,
+                    text: message
                 },
                 cache: false,
                 success: function() {
