@@ -2,11 +2,13 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var browserSync = require('browser-sync').create();
+var livereload = require('gulp-livereload');
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('../package.json');
+
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -26,9 +28,7 @@ gulp.task('less', function() {
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(livereload())
 });
 
 // Minify CSS
@@ -37,9 +37,7 @@ gulp.task('minify-css', function() {
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(livereload())
 });
 
 // Minify JS
@@ -49,9 +47,7 @@ gulp.task('minify-js', function() {
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('js'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(livereload())
 });
 
 // Copy Bootstrap core files from node_modules to vendor directory
@@ -83,21 +79,23 @@ gulp.task('fontawesome', function() {
 gulp.task('copy', ['bootstrap', 'jquery', 'fontawesome']);
 
 // Configure the browserSync task
-gulp.task('browserSync', function() {
-    browserSync.init({
-        server: {
-            baseDir: ''
-        },
-    })
-})
+//gulp.task('browserSync', function() {
+//    browserSync.init({
+//        server: {
+//            baseDir: ''
+//        },
+//    })
+//})
 
 // Watch Task that compiles LESS and watches for HTML or JS changes and reloads with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', ['less', 'minify-css', 'minify-js'], function() {
+    livereload.listen();
     gulp.watch('less/*.less', ['less']);
     gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML, JS or image files change
-    gulp.watch('img/*.png', browserSync.reload);
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
+    gulp.watch('gulpfile.js', livereload());
+    gulp.watch('img/*.png', livereload());
+    gulp.watch('*.html', livereload());
+    gulp.watch('js/**/*.js', livereload());
 });
