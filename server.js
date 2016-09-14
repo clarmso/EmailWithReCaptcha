@@ -19,9 +19,9 @@ app.post('/mail', function(req,res) {
     console.log(body);
     console.log(error);
     if ( !error && body.message == 'Queued. Thank you.' ) {
-      res.status(200).send(body);
+      res.sendStatus(200);
     } else {
-      res.status(400).send(body);
+      res.sendStatus(400);
     }
   });
 });
