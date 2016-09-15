@@ -24,7 +24,6 @@ $(function() {
                 type: "POST",
                 data: {
                     from: email,
-                    to: 'clare.m.so@gmail.com',
                     subject: '[Webform] Message from '+name,
                     text: message
                 },
