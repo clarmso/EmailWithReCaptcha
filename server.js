@@ -1,5 +1,6 @@
 //Initialize the Express library, used to create a web server
 var express = require("express");
+var https = require("https");
 var app = express();
 
 // API endpoint to send email from the form
@@ -35,4 +36,8 @@ app.post('/mail', function(req,res) {
 app.use( express.static('client') );
 
 //Turn on the web server listening on a specific port
-app.listen( process.env.PORT || 8000 );
+//if ( process.env.PRODUCTION = 'TRUE' ) {
+  https.createServer(app).listen( process.env.PORT );
+//} else {
+//  app.listen( process.env.PORT );
+//}
