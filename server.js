@@ -12,9 +12,9 @@ app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing applicati
 
 /* At the top, with other redirect methods before other routes */
 
-app.get('/',function(req,res,next){
+app.get('*',function(req,res,next){
   if( process.env.NODE_ENV == 'production' && req.protocol !== 'https' )
-    res.redirect( 'https://' + req.headers.host );
+    res.redirect( 'https://' + req.headers.host + req.url );
   else
     next() /* Continue to other routes if we're not redirecting */
 })
