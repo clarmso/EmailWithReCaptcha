@@ -11,15 +11,15 @@ app.use( bodyParser.json() ); // for parsing application/json
 app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing application/x-www-form-urlencoded
 
 /* At the top, with other redirect methods before other routes */
-/*
-app.all('*',function(req,res,next){
-  console.log(req.headers.host);
-  if( process.env.PRODUCTION == 'TRUE' && req.headers['x-forwarded-proto'] != 'https')
-    res.redirect( 'https://' + req.headers.host + req.url )
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
-*/
+
+//app.all('*',function(req,res,next){
+//  console.log(req.headers.host);
+//  if( process.env.PRODUCTION == 'TRUE' && req.headers['x-forwarded-proto'] != 'https')
+//    res.redirect( 'https://' + req.headers.host + req.url )
+//  else
+//    next() /* Continue to other routes if we're not redirecting */
+//})
+
 
 app.post('/mail', function(req,res) {
   req.body.to = process.env.EMAIL;
@@ -38,4 +38,4 @@ app.post('/mail', function(req,res) {
 app.use( express.static('client') );
 
 //Turn on the web server listening on a specific port
-app.listen( process.env.PORT || 8000 );
+app.listen( process.env.PORT );
