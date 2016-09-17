@@ -12,19 +12,19 @@ app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing applicati
 
 /* At the top, with other redirect methods before other routes */
 
-//app.all('*',function(req,res,next){
-//  console.log(req.headers.host);
-//  if( process.env.PRODUCTION == 'TRUE' && req.headers['x-forwarded-proto'] != 'https')
-//    res.redirect( 'https://' + req.headers.host + req.url )
-//  else
-//    next() /* Continue to other routes if we're not redirecting */
-//})
+app.get('*',function(req,res,next){
+  if( process.env.PRODUCTION == 'TRUE' && req.headers['x-forwarded-proto'] != 'https')
+    res.redirect( 'https://' + req.headers.host + req.url )
+  else
+    next() /* Continue to other routes if we're not redirecting */
+})
 
 
 app.post('/mail', function(req,res) {
   req.body.to = process.env.EMAIL;
   mailgun.messages().send(req.body, function (error, body) {
-    console.log( "Response from mailgun: " + body.toString() );
+    console.log( "Response from mailgun: " + body.message );
+    console.log( "Response from mailgun: " + body.id );
     if ( !error && body.message == 'Queued. Thank you.' ) {
       res.sendStatus(200);
     } else {
