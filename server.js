@@ -12,23 +12,28 @@ app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing applicati
 
 /* At the top, with other redirect methods before other routes */
 
-app.get('*',function(req,res,next){
-  if( process.env.NODE_ENV == 'production' && req.headers['x-forwarded-proto'] != 'https')
-    res.redirect( 'https://' + req.headers.host + req.url )
+app.get('/',function(req,res,next){
+  if( process.env.NODE_ENV == 'production' && req.protocol !== 'https' )
+    res.redirect( 'https://' + req.headers.host );
   else
     next() /* Continue to other routes if we're not redirecting */
 })
 
 
 app.post('/mail', function(req,res) {
+
+  if ( process.env.NODE_ENV == 'production' && req.protocol !== 'https' ) {
+    return res.status(403).send( { message: 'SSL required' } );
+  }
+
   req.body.to = process.env.EMAIL;
   mailgun.messages().send(req.body, function (error, body) {
     console.log( "Response from mailgun: " + body.message );
     console.log( "Response from mailgun: " + body.id );
     if ( !error && body.message == 'Queued. Thank you.' ) {
-      res.sendStatus(200);
+      res.status(200).send( { message: 'Your message has been sent' } );
     } else {
-      res.sendStatus(400);
+      res.status(400).send( { message: 'Sorry, your message cannot be sent. Please try again later.' } );
     }
   });
 });
