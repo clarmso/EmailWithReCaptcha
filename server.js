@@ -13,7 +13,7 @@ app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing applicati
 app.all('*',function(req,res,next){
   console.log(req.headers.host);
   if( process.env.PRODUCTION == 'TRUE' && req.headers['x-forwarded-proto'] != 'https')
-    res.redirect( req.headers.host + req.url )
+    res.redirect( 'https://' + req.headers.host + req.url )
   else
     next() /* Continue to other routes if we're not redirecting */
 })
