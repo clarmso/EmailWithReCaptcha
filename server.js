@@ -36,8 +36,4 @@ app.post('/mail', function(req,res) {
 app.use( express.static('client') );
 
 //Turn on the web server listening on a specific port
-//if ( process.env.PRODUCTION = 'TRUE' ) {
-  https.createServer(app).listen( process.env.PORT );
-//} else {
-//  app.listen( process.env.PORT );
-//}
+app.listen( process.env.PORT );
