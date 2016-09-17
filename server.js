@@ -25,7 +25,6 @@ app.post('/mail', function(req,res) {
   req.body.to = process.env.EMAIL;
   mailgun.messages().send(req.body, function (error, body) {
     console.log( "Response from mailgun: " + body.toString() );
-    console.log( "Error from mailgun: " + error.toString() );
     if ( !error && body.message == 'Queued. Thank you.' ) {
       res.sendStatus(200);
     } else {
