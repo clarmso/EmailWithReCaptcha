@@ -12,6 +12,7 @@ var bodyParser = require( 'body-parser' );
 app.use( bodyParser.json() ); // for parsing application/json
 app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing application/x-www-form-urlencoded
 
+
 // Set up reCAPTCHA to prevent abuse of the mail form
 var recaptcha = require('express-recaptcha');
 recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY );
@@ -32,7 +33,7 @@ app.post('*', function(req, res, next) {
     next() /* Continue to other routes if we're not redirecting */
 });
 
-app.post('/mail', recaptcha.middleware.verify, function(req,res) {
+app.post('/mail', recaptcha.middleware.verify, function(req, res) {
 
   console.log( "Received data: ");
   console.log(req.body);
@@ -40,21 +41,20 @@ app.post('/mail', recaptcha.middleware.verify, function(req,res) {
   console.log( "Response from reCAPTCHA: ");
   console.log( req.recaptcha );
 
+  req.body.to = process.env.EMAIL;
+
   if ( req.recaptcha.error ) {
-    console.log( "reCAPTCHA failed" );
     return res.status(403).send( { message: req.recaptcha.error.toString() } );
   }
   else {
-    console.log( "reCAPTCHA ok" );
-    req.body.to = process.env.EMAIL;
-    mailgun.messages().send( req.body, function (error, body) {
+    mailgun.messages().send( req.body, function sendReply (error, body) {
       console.log( "Response from Mailgun: ");
       console.log( body );
       if ( !error ) {
         return res.status(200).send( { message: 'Your message has been sent' } );
       }
       else {
-        return res.status(400).send( { message: error.toString() } );
+        return res.status(404).send( { message: error.toString() } );
       }
     });
   }

@@ -1,6 +1,6 @@
 $(function() {
 
-    $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
+    $("#contactForm input,#contactForm textarea, #g-recaptcha").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -25,7 +25,8 @@ $(function() {
                 data: {
                     from: email,
                     subject: '[Webform] Message from '+name,
-                    text: message
+                    text: message,
+                    'g-recaptcha-response': grecaptcha.getResponse()
                 },
                 cache: false,
                 success: function() {
@@ -39,18 +40,27 @@ $(function() {
                     $('#success > .alert-success')
                         .append('</div>');
 
-                    //clear all fields
+                    //clear all fields and reCAPTCHA
                     $('#contactForm').trigger("reset");
+                    grecaptcha.reset();
                 },
-                error: function() {
+                error: function(res) {
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+
+                    if (res.status == 403) {
+                        $('#success > .alert-danger').append("<strong>Please use reCAPTCHA to prove that you're not a robot. ;-)</strong>");
+                        // Do not clear any fields for reCAPTCHA errors
+                    } else {
+                        $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                        //clear all fields and reCAPTCHA
+                        $('#contactForm').trigger("reset");
+                        grecaptcha.reset();
+                    }
+
                     $('#success > .alert-danger').append('</div>');
-                    //clear all fields
-                    $('#contactForm').trigger("reset");
                 },
             });
         },
