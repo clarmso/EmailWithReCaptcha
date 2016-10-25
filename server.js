@@ -8,14 +8,20 @@ var mailgun = require('mailgun-js') ({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN
 } );
-var bodyParser = require( 'body-parser' );
-app.use( bodyParser.json() ); // for parsing application/json
-app.use( bodyParser.urlencoded( { extended: true } )) ; // for parsing application/x-www-form-urlencoded
 
+// body-parser for the json
+var bodyParser = require( 'body-parser' );
+app.use( bodyParser.json() );
+app.use( bodyParser.urlencoded( { extended: true } ))
 
 // Set up reCAPTCHA to prevent abuse of the mail form
 var recaptcha = require('express-recaptcha');
 recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY );
+
+// Security
+var helmet = require('helmet');
+app.use(helmet());
+app.disable('x-powered-by');
 
 /* At the top, with other redirect methods before other routes */
 
