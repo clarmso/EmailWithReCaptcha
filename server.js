@@ -1,7 +1,9 @@
 //Initialize the Express library, used to create a web server
 var express = require("express");
-var https = require("https");
 var app = express();
+var http = require('http');
+var express_enforces_ssl = require('express-enforces-ssl');
+
 
 // Set up mailgun to send email. body-parser is required for the json format.
 var mailgun = require('mailgun-js') ({
@@ -21,23 +23,8 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 // Security
 var helmet = require('helmet');
 app.use(helmet());
-app.disable('x-powered-by');
-
-/* At the top, with other redirect methods before other routes */
-
-app.get('*',function(req,res,next){
-  if( process.env.NODE_ENV == 'production' && req.headers['x-forwarded-proto'] !== 'https' )
-    res.redirect( 'https://' + req.headers.host + req.url );
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
-
-app.post('*', function(req, res, next) {
-  if( process.env.NODE_ENV == 'production' && req.headers['x-forwarded-proto'] !== 'https' )
-    return res.status(403).send( { message: 'SSL required' } );
-  else
-    next() /* Continue to other routes if we're not redirecting */
-});
+app.enable('trust proxy');
+app.use(express_enforces_ssl());
 
 app.post('/mail', recaptcha.middleware.verify, function(req, res) {
 
