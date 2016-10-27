@@ -21,10 +21,15 @@ var recaptcha = require('express-recaptcha');
 recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY );
 
 // Security
-var helmet = require('helmet');
-app.use(helmet());
-app.enable('trust proxy');
-app.use(express_enforces_ssl());
+// Do not use SSL in the localhost because there's no certificate there.
+if ( !process.env.PRODUCTION ) {
+  var helmet = require('helmet');
+  app.use(helmet());
+  app.use(helmet.noCache());
+  app.use(helmet.referrerPolicy());
+  app.enable('trust proxy');
+  app.use(express_enforces_ssl());
+}
 
 app.post('/mail', recaptcha.middleware.verify, function(req, res) {
 
