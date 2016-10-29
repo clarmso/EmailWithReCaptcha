@@ -55,8 +55,7 @@ $(function() {
                         // Do not clear any fields for reCAPTCHA errors
                     } else {
                         $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
-                        //clear all fields and reCAPTCHA
-                        $('#contactForm').trigger("reset");
+                        //Clear reCAPTCHA for next attempt
                         grecaptcha.reset();
                     }
 
