@@ -1,9 +1,6 @@
 //Initialize the Express library, used to create a web server
 var express = require("express");
 var app = express();
-var http = require('http');
-var express_enforces_ssl = require('express-enforces-ssl');
-
 
 // Set up mailgun to send email. body-parser is required for the json format.
 var mailgun = require('mailgun-js') ({
@@ -22,8 +19,9 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 
 // Security
 // Do not use SSL in the localhost because there's no certificate there.
+var helmet = require('helmet');
+var express_enforces_ssl = require('express-enforces-ssl');
 if ( !process.env.PRODUCTION ) {
-  var helmet = require('helmet');
   app.use(helmet());
   app.use(helmet.noCache());
   app.use(helmet.referrerPolicy());
