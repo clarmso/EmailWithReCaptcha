@@ -80,8 +80,18 @@ header img {
   display: block;
   margin: 0 auto 20px;
 }
+header .img-responsive {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
 header .img-responsive:hover {
-  content: url('../img/Clare-2.png');
+  -webkit-transform: scale(1.08);
+  -moz-transform: scale(1.08);
+  transform: scale(1.08);
 }
 header .intro-text .name {
   display: block;
