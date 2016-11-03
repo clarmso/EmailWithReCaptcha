@@ -27,6 +27,9 @@ gulp.task('less', function() {
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('client/css'))
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('client/css'))
         .pipe(livereload())
 });
 
@@ -76,7 +79,7 @@ gulp.task('fontawesome', function() {
 
 gulp.task('reload-html', function() {
     return gulp.src('client/*.html')
-        .pipe(gulp.dest('.'))
+        .pipe(gulp.dest('client/.'))
         .pipe(livereload());
 });
 
