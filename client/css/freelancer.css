@@ -80,11 +80,8 @@ header img {
   display: block;
   margin: 0 auto 20px;
 }
-header .img-responsive {
+header .avatar {
   border-radius: 50%;
-}
-header .img-responsive:hover {
-  content: url('../img/Clare-2.png');
 }
 header .intro-text .name {
   display: block;
