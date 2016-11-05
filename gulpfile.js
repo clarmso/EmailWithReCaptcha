@@ -19,7 +19,7 @@ var banner = ['/*!\n',
 ].join('');
 
 // Default task
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['less', 'minify-js', 'copy']);
 
 // Less task to compile the less files and add the banner
 gulp.task('less', function() {
@@ -95,6 +95,6 @@ gulp.task('dev', ['less', 'minify-css', 'minify-js'], function() {
     // Reloads the browser whenever HTML, JS or image files change
     gulp.watch('client/gulpfile.js', ['reload-html'] );
     gulp.watch('client/img/*.png', ['reload-html'] );
-    gulp.watch('client/.*.html', ['reload-html'] );
+    gulp.watch('client/*.html', ['reload-html'] );
     gulp.watch('client/js/**/*.js', ['reload-html'] );
 });
