@@ -32,7 +32,7 @@ if ( !process.env.PRODUCTION ) {
 app.post('/mail', recaptcha.middleware.verify, function(req, res) {
 
   console.log( "Received data: ");
-  console.log(req.body);
+  console.log( req.body );
 
   console.log( "Response from reCAPTCHA: ");
   console.log( req.recaptcha );
