@@ -32,6 +32,11 @@
     <!-- Recaptcha for the contact form -->
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
+    <!-- Google Map -->
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqnCh84tr5FIu4iQAutu2H5cqb9uNX2P4&callback=initMap" async>
+    </script>
+
     <!-- favico.ico -->
     <link rel="icon" type="image/png" href="img/Clare.png">
 
@@ -164,6 +169,12 @@
                     </form>
                 </div>
             </div>
+            <div class="row">
+              <div class="col-lg-12 col-lg-offset-2">
+                <p>P.S. If you are in Kitchener-Waterloo, please come by to say hello!</p>
+                <div id="map"></div>
+              </div>
+            </div>
         </div>
     </section>
 
@@ -230,9 +241,9 @@
                               <img src="img/portfolio/WhereAmI.png" class="img-responsive img-centered" alt="">
                             </a>
                             <p>This is a game that quizzes the players' geographic knowledge around the world.
-                              I designed the game, collected the location data and the (supposingly funny 😄)
-                              memes.  This project was a part of the web development course offered by
-                              <a href="https://brainstation.io/">BrainStation</a>.
+                              I designed the game, collected the location data and compile the (supposingly
+                              funny 😄 but not offensive) memes.  This project was a part of the web development
+                              course offered by <a href="https://brainstation.io/">BrainStation</a>.
                             </p>
                             <ul class="list-inline item-details">
                                 <li>Tech Stack:
