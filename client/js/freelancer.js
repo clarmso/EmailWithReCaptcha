@@ -44,9 +44,18 @@
 })(jQuery); // End of use strict
 
 function initMap() {
-  var kw = {lat: 43.4535, lng: -80.5001};
+  var kw = {lat: 43.458381, lng: -80.5177273};
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 14,
     center: kw,
+    scrollwheel: false,
+    mayTypeControl: false,
+    keyboardShortcuts: false,
+    disableDefaultUI: true,
+    draggable: false,
+  });
+  var marker = new google.maps.Marker({
+    map: map,
+    position: kw,
   });
 }
