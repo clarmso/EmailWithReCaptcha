@@ -30,7 +30,6 @@ gulp.task('less', function() {
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('client/css'))
-        .pipe(livereload())
 });
 
 // Minify CSS
@@ -39,7 +38,6 @@ gulp.task('minify-css', function() {
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('client/css'))
-        .pipe(livereload())
 });
 
 // Minify JS
@@ -49,7 +47,6 @@ gulp.task('minify-js', function() {
         .pipe(header(banner, { pkg: pkg }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('client/js'))
-        .pipe(livereload())
 });
 
 // Copy Bootstrap core files from node_modules to vendor directory
@@ -89,9 +86,9 @@ gulp.task('copy', ['bootstrap', 'jquery', 'fontawesome']);
 // Watch Task that compiles LESS and watches for HTML or JS changes and reloads with browserSync
 gulp.task('dev', ['less', 'minify-css', 'minify-js'], function() {
     livereload.listen();
-    gulp.watch('client/less/*.less', ['less']);
-    gulp.watch('client/.css/*.css', ['minify-css']);
-    gulp.watch('client/js/*.js', ['minify-js']);
+    gulp.watch('client/less/*.less', ['less', 'reload-html']);
+    gulp.watch('client/.css/*.css', ['minify-css', 'reload-html']);
+    gulp.watch('client/js/*.js', ['minify-js', 'reload-html']);
     // Reloads the browser whenever HTML, JS or image files change
     gulp.watch('client/gulpfile.js', ['reload-html'] );
     gulp.watch('client/img/*.png', ['reload-html'] );
