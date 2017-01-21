@@ -29,7 +29,7 @@ if ( !process.env.LOCAL ) {
       scriptSrc: ["'self'", 'oss.maxcdn.com', 'www.google.com',
         'cdnjs.cloudflare.com', 'aps.googleapis.com'],
     }
-  }))
+  }));
   app.use(helmet.noCache());
   app.use(helmet.referrerPolicy());
   app.enable('trust proxy');
