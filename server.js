@@ -25,10 +25,14 @@ if ( !process.env.LOCAL ) {
   app.use(helmet());
   app.use(helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", 'https://www.google.com/recaptcha/',
-        'https://www.gstatic.com/recaptcha/'],
-      frameSrc: ["'self'", 'https://www.google.com/recaptcha/'],
-      styleSrc: ["'self'", 'unsafe-inline']
+      defaultSrc: [ "'self'", 'https://www.google.com/recaptcha/',
+        'https://www.gstatic.com/recaptcha/' ],
+      scriptSrc: [ "'self'" ],
+      styleSrc: [ "'self'", "'unsafe-inline'" ],
+      imgSrc: [ "'self'" ],
+      connectSrc: [ "'self'" ],
+      fontSrc: [ "'self'", 'fonts.gstatic.com' , 'fonts.googleapis.com' ],
+      frameSrc: [ "'self'", 'https://www.google.com/recaptcha/' ],
     }
   }));
   app.use(helmet.noCache());
