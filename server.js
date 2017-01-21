@@ -28,12 +28,6 @@ if ( !process.env.LOCAL ) {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", 'oss.maxcdn.com', 'www.google.com',
         'cdnjs.cloudflare.com', 'aps.googleapis.com'],
-      styleSrc: ["'self'"],
-      imgSrc: ["'self'"],
-      connectSrc: ["'self'"],
-      fontSrc: ["'self'", 'fonts.googleapis.com'],
-      sandbox: ['allow-forms', 'allow-scripts'],
-      form-action: ["'self'"],
     }
   }))
   app.use(helmet.noCache());
