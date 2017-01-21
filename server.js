@@ -21,35 +21,44 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 // Do not use SSL in the localhost because there's no certificate there.
 var helmet = require('helmet');
 var express_enforces_ssl = require('express-enforces-ssl');
+
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: [ "'self'",
+      'https://www.google.com/recaptcha/',
+      'https://www.gstatic.com/recaptcha/' ],
+    scriptSrc: [ "'self'",
+      'https://cdnjs.cloudflare.com',
+      'https://maps.googleapis.com',
+      'https://www.google-analytics.com',
+      'https://ajax.googleapis.com',
+      'https://www.google.com/recaptcha/',
+      'https://www.gstatic.com/recaptcha/' ],
+    styleSrc: [ "'self'",
+      'https://fonts.googleapis.com',
+      "'unsafe-inline'" ],
+    imgSrc: [ "'self'",
+      'https://maps.googleapis.com',
+      'https://maps.gstatic.com',
+      'https://csi.gstatic.com' ],
+    connectSrc: [ "'self'", 'ws://127.0.0.1:*/livereload' ],
+    fontSrc: [ "'self'",
+      'https://themes.googleusercontent.com',
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com' ],
+    mediaSrc: [ "'none'" ],
+    frameSrc: [ "'self'",
+      'https://www.google.com/recaptcha/' ],
+    sandbox: [ 'allow-forms', 'allow-scripts', 'allow-same-origin' ],
+    childSrc: [ "'none'" ],
+    formAction: [ "'self'" ],
+    objectSrc: [ "'none'" ]
+  }
+}));
+app.use(helmet.noCache());
+app.use(helmet.referrerPolicy());
 if ( process.env.NODE_ENV ) {
-  app.use(helmet());
-  app.use(helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: [ "'self'",
-        'https://www.google.com/recaptcha/',
-        'https://www.gstatic.com/recaptcha/' ],
-      scriptSrc: [ "'self'",
-        'https://cdnjs.cloudflare.com',
-        'https://maps.googleapis.com',
-        'https://www.google-analytics.com',
-        'https://ajax.googleapis.com' ],
-      styleSrc: [ "'self'" ],
-      imgSrc: [ "'self'" ],
-      connectSrc: [ "'self'" ],
-      fontSrc: [ "'self'",
-        'https://fonts.gstatic.com' ,
-        'https://fonts.googleapis.com' ],
-      mediaSrc: [ "'none'" ],
-      frameSrc: [ "'self'",
-        'https://www.google.com/recaptcha/' ],
-      sandbox: [ 'allow-forms' ],
-      childSrc: [ "'none'" ],
-      formAction: [ "'self'" ],
-      pluginTypes: [ "'none'" ]
-    }
-  }));
-  app.use(helmet.noCache());
-  app.use(helmet.referrerPolicy());
   app.enable('trust proxy');
   app.use(express_enforces_ssl());
 }
