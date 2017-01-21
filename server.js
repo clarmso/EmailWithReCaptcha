@@ -23,11 +23,14 @@ var helmet = require('helmet');
 var express_enforces_ssl = require('express-enforces-ssl');
 if ( !process.env.LOCAL ) {
   app.use(helmet());
-  //app.use(helmet.contentSecurityPolicy({
-  //  directives: {
-  //    defaultSrc: ["'self'"],
-  //  }
-  //}));
+  app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", 'https://www.google.com/recaptcha/',
+        'https://www.gstatic.com/recaptcha/'],
+      frameSrc: ["'self'", 'https://www.google.com/recaptcha/'],
+      styleSrc: ["'self'", 'unsafe-inline']
+    }
+  }));
   app.use(helmet.noCache());
   app.use(helmet.referrerPolicy());
   app.enable('trust proxy');
