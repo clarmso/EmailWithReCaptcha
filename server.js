@@ -27,8 +27,8 @@ if ( !process.env.LOCAL ) {
     directives: {
       defaultSrc: [ "'self'", 'https://www.google.com/recaptcha/',
         'https://www.gstatic.com/recaptcha/' ],
-      scriptSrc: [ "'self'" ],
-      styleSrc: [ "'self'", "'unsafe-inline'" ],
+      scriptSrc: [ "'self'", 'cdnjs.cloudflare.com', 'maps.googleapis.com' ],
+      styleSrc: [ "'self'", /*"'unsafe-inline'"*/ ],
       imgSrc: [ "'self'" ],
       connectSrc: [ "'self'" ],
       fontSrc: [ "'self'", 'fonts.gstatic.com' , 'fonts.googleapis.com' ],
