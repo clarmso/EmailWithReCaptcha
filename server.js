@@ -21,26 +21,30 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 // Do not use SSL in the localhost because there's no certificate there.
 var helmet = require('helmet');
 var express_enforces_ssl = require('express-enforces-ssl');
-if ( !process.env.LOCAL ) {
+if ( process.env.NODE_ENV ) {
   app.use(helmet());
   app.use(helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: [ "'self'", 'https://www.google.com/recaptcha/',
+      defaultSrc: [ "'self'",
+        'https://www.google.com/recaptcha/',
         'https://www.gstatic.com/recaptcha/' ],
-      scriptSrc: [ "'self'", 'https://cdnjs.cloudflare.com',
-        'https://maps.googleapis.com', 'https://www.google-analytics.com',
+      scriptSrc: [ "'self'",
+        'https://cdnjs.cloudflare.com',
+        'https://maps.googleapis.com',
+        'https://www.google-analytics.com',
         'https://ajax.googleapis.com' ],
       styleSrc: [ "'self'" ],
       imgSrc: [ "'self'" ],
       connectSrc: [ "'self'" ],
-      fontSrc: [ "'self'", 'https://fonts.gstatic.com' ,
+      fontSrc: [ "'self'",
+        'https://fonts.gstatic.com' ,
         'https://fonts.googleapis.com' ],
       mediaSrc: [ "'none'" ],
-      frameSrc: [ "'self'", 'https://www.google.com/recaptcha/' ],
+      frameSrc: [ "'self'",
+        'https://www.google.com/recaptcha/' ],
       sandbox: [ 'allow-forms' ],
       childSrc: [ "'none'" ],
       formAction: [ "'self'" ],
-      frameAnestors: [ "'none'" ],
       pluginTypes: [ "'none'" ]
     }
   }));
