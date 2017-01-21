@@ -27,12 +27,21 @@ if ( !process.env.LOCAL ) {
     directives: {
       defaultSrc: [ "'self'", 'https://www.google.com/recaptcha/',
         'https://www.gstatic.com/recaptcha/' ],
-      scriptSrc: [ "'self'", 'cdnjs.cloudflare.com', 'maps.googleapis.com' ],
-      styleSrc: [ "'self'", /*"'unsafe-inline'"*/ ],
+      scriptSrc: [ "'self'", 'https://cdnjs.cloudflare.com',
+        'https://maps.googleapis.com', 'https://www.google-analytics.com',
+        'https://ajax.googleapis.com' ],
+      styleSrc: [ "'self'" ],
       imgSrc: [ "'self'" ],
       connectSrc: [ "'self'" ],
-      fontSrc: [ "'self'", 'fonts.gstatic.com' , 'fonts.googleapis.com' ],
+      fontSrc: [ "'self'", 'https://fonts.gstatic.com' ,
+        'https://fonts.googleapis.com' ],
+      mediaSrc: [ "'none'" ],
       frameSrc: [ "'self'", 'https://www.google.com/recaptcha/' ],
+      sandbox: [ 'allow-forms' ],
+      childSrc: [ "'none'" ],
+      formAction: [ "'self'" ],
+      frameAnestors: [ "'none'" ],
+      pluginTypes: [ "'none'" ]
     }
   }));
   app.use(helmet.noCache());
