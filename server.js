@@ -21,8 +21,21 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 // Do not use SSL in the localhost because there's no certificate there.
 var helmet = require('helmet');
 var express_enforces_ssl = require('express-enforces-ssl');
-if ( !process.env.PRODUCTION ) {
+if ( !process.env.LOCAL ) {
   app.use(helmet());
+  app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'oss.maxcdn.com', 'www.google.com',
+        'cdnjs.cloudflare.com', 'aps.googleapis.com'],
+      styleSrc: ["'self'"],
+      imgSrc: ["'self'"],
+      connectSrc: ["'self'"],
+      fontSrc: ["'self'", 'fonts.googleapis.com'],
+      sandbox: ['allow-forms', 'allow-scripts'],
+      form-action: ["'self'"],
+    }
+  }))
   app.use(helmet.noCache());
   app.use(helmet.referrerPolicy());
   app.enable('trust proxy');
