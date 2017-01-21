@@ -26,8 +26,6 @@ if ( !process.env.LOCAL ) {
   app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", 'oss.maxcdn.com', 'www.google.com',
-        'cdnjs.cloudflare.com', 'aps.googleapis.com'],
     }
   }));
   app.use(helmet.noCache());
