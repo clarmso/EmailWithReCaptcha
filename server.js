@@ -25,35 +25,61 @@ var express_enforces_ssl = require('express-enforces-ssl');
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: [ "'self'",
+    defaultSrc: [
+      "'self'",
       'https://www.google.com/recaptcha/',
-      'https://www.gstatic.com/recaptcha/' ],
-    scriptSrc: [ "'self'",
+      'https://www.gstatic.com/recaptcha/',
+    ],
+    scriptSrc: [
+      "'self'",
       'https://cdnjs.cloudflare.com',
       'https://maps.googleapis.com',
       'https://www.google-analytics.com',
       'https://ajax.googleapis.com',
       'https://www.google.com/recaptcha/',
-      'https://www.gstatic.com/recaptcha/' ],
-    styleSrc: [ "'self'",
+      'https://www.gstatic.com/recaptcha/',
+    ],
+    styleSrc: [
+      "'self'",
       'https://fonts.googleapis.com',
-      "'unsafe-inline'" ],
-    imgSrc: [ "'self'",
+      'https://maps.googleapis.com/',
+      'https://www.gstatic.com/',
+      "'unsafe-inline'",
+    ],
+    imgSrc: [
+      "'self'",
       'https://maps.googleapis.com',
       'https://maps.gstatic.com',
-      'https://csi.gstatic.com' ],
-    connectSrc: [ "'self'", 'ws://127.0.0.1:*/livereload' ],
-    fontSrc: [ "'self'",
+      'https://csi.gstatic.com'
+    ],
+    connectSrc: [
+      "'self'",
+      'ws://127.0.0.1:*/livereload',
+    ],
+    fontSrc: [
+      "'self'",
       'https://themes.googleusercontent.com',
       'https://fonts.googleapis.com',
-      'https://fonts.gstatic.com' ],
-    mediaSrc: [ "'none'" ],
-    frameSrc: [ "'self'",
-      'https://www.google.com/recaptcha/' ],
-    sandbox: [ 'allow-forms', 'allow-scripts', 'allow-same-origin' ],
-    childSrc: [ "'none'" ],
-    formAction: [ "'self'" ],
-    objectSrc: [ "'none'" ]
+      'https://fonts.gstatic.com',
+    ],
+    mediaSrc: [
+      "'none'",
+    ],
+    childSrc: [
+      "'self'",
+      'https://www.google.com/recaptcha/'
+    ],
+    sandbox: [
+      'allow-forms',
+      'allow-scripts',
+      'allow-same-origin',
+    ],
+    formAction: [
+      "'self'",
+    ],
+    objectSrc: [
+      "'none'",
+    ]
   }
 }));
 app.use(helmet.noCache());
@@ -88,6 +114,11 @@ app.post('/mail', recaptcha.middleware.verify, function(req, res) {
       }
     });
   }
+});
+
+app.get('/', function(req, res, next) {
+  console.log("Request from "+req.ip);
+  next();
 });
 
 //Tell the server to serve the contents of the client folder
