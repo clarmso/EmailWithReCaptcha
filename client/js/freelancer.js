@@ -57,5 +57,6 @@ function initMap() {
   var marker = new google.maps.Marker({
     map: map,
     position: kw,
+    icon: 'img/pin.png'
   });
 }
