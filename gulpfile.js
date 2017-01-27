@@ -87,7 +87,7 @@ gulp.task('copy', ['bootstrap', 'jquery', 'fontawesome']);
 gulp.task('dev', ['less', 'minify-css', 'minify-js'], function() {
     livereload.listen();
     gulp.watch('client/less/*.less', ['less', 'reload-html']);
-    gulp.watch('client/.css/*.css', ['minify-css', 'reload-html']);
+    gulp.watch('client/css/*.css', ['minify-css', 'reload-html']);
     gulp.watch('client/js/*.js', ['minify-js', 'reload-html']);
     // Reloads the browser whenever HTML, JS or image files change
     gulp.watch('client/gulpfile.js', ['reload-html'] );
