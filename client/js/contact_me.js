@@ -6,7 +6,7 @@ $(function() {
             $('#success').html("<div class='alert alert-danger'>");
             $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                 .append("</button>");
-            $('#success > .alert-danger').append("<strong>Please fill in your name, email address and a brief message. ;-)</strong>");
+            $('#success > .alert-danger').append("<strong>Please fill in your name, email address and a brief message. 📝</strong>");
             $('#success > .alert-danger').append('</div>');
         },
         submitSuccess: function($form, event) {
@@ -40,7 +40,7 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>Your message has been sent. ✉️</strong>");
                     $('#success > .alert-success')
                         .append('</div>');
 
@@ -55,10 +55,10 @@ $(function() {
                         .append("</button>");
 
                     if (res.status == 403) {
-                        $('#success > .alert-danger').append("<strong>Please use reCAPTCHA to prove that you're not a robot. ;-)</strong>");
+                        $('#success > .alert-danger').append("<strong>Please use reCAPTCHA to prove that you're not a robot. 🤖</strong>");
                         // Do not clear any fields for reCAPTCHA errors
                     } else {
-                        $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                        $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. 📮 Please try again later!");
                         //Clear reCAPTCHA for next attempt
                         grecaptcha.reset();
                     }
