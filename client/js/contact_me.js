@@ -3,7 +3,11 @@ $(function() {
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
-            // additional error messages or events
+            $('#success').html("<div class='alert alert-danger'>");
+            $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                .append("</button>");
+            $('#success > .alert-danger').append("<strong>Please fill in your name, email address and a brief message. ;-)</strong>");
+            $('#success > .alert-danger').append('</div>');
         },
         submitSuccess: function($form, event) {
             // Prevent spam click and default submit behaviour
