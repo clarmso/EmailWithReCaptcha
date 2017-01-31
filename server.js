@@ -25,10 +25,61 @@ var express_enforces_ssl = require('express-enforces-ssl');
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
+    baseUri: [
+      "'self'",
+    ],
+    blockAllMixedContent: true,
+    childSrc: [
+      "'self'",
+      'https://www.google.com/recaptcha/'
+    ],
+    connectSrc: [
+      "'self'",
+      'ws://127.0.0.1:*/livereload',
+    ],
     defaultSrc: [
       "'self'",
       'https://www.google.com/recaptcha/',
       'https://www.gstatic.com/recaptcha/',
+    ],
+    fontSrc: [
+      "'self'",
+      'https://themes.googleusercontent.com',
+      'https://fonts.googleapis.com',
+      'https://fonts.gstatic.com',
+      'https://maxcdn.bootstrapcdn.com',
+    ],
+    formAction: [
+      "'self'",
+    ],
+    frameAncestors: [
+      "'none'",
+    ],
+    frameSrc: [
+      "'none'",
+    ],
+    imgSrc: [
+      "'self'",
+      'https://maps.googleapis.com',
+      'https://maps.gstatic.com',
+      'https://csi.gstatic.com'
+    ],
+    manifestSrc: [
+      "'none'",
+    ],
+    mediaSrc: [
+      "'none'",
+    ],
+    objectSrc: [
+      "'none'",
+    ],
+    //reportUri: [
+    //
+    //],
+    sandbox: [
+      'allow-forms',
+      'allow-scripts',
+      'allow-same-origin',
     ],
     scriptSrc: [
       "'self'",
@@ -38,7 +89,6 @@ app.use(helmet.contentSecurityPolicy({
       'https://ajax.googleapis.com',
       'https://www.google.com/recaptcha/',
       'https://www.gstatic.com/recaptcha/',
-      'https://code.jquery.com/',
       'https://maxcdn.bootstrapcdn.com',
     ],
     styleSrc: [
@@ -49,42 +99,9 @@ app.use(helmet.contentSecurityPolicy({
       'https://maxcdn.bootstrapcdn.com',
       "'unsafe-inline'",
     ],
-    imgSrc: [
-      "'self'",
-      'https://maps.googleapis.com',
-      'https://maps.gstatic.com',
-      'https://csi.gstatic.com'
-    ],
-    connectSrc: [
-      "'self'",
-      'ws://127.0.0.1:*/livereload',
-    ],
-    fontSrc: [
-      "'self'",
-      'https://themes.googleusercontent.com',
-      'https://fonts.googleapis.com',
-      'https://fonts.gstatic.com',
-      'https://maxcdn.bootstrapcdn.com',
-    ],
-    mediaSrc: [
-      "'none'",
-    ],
-    childSrc: [
-      "'self'",
-      'https://www.google.com/recaptcha/'
-    ],
-    sandbox: [
-      'allow-forms',
-      'allow-scripts',
-      'allow-same-origin',
-    ],
-    formAction: [
-      "'self'",
-    ],
-    objectSrc: [
-      "'none'",
-    ]
-  }
+  },
+  browserSniff: false,
+
 }));
 app.use(helmet.noCache());
 app.use(helmet.referrerPolicy());
