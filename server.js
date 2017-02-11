@@ -2,6 +2,10 @@
 var express = require("express");
 var app = express();
 
+//Enable compression
+var compression = require("compression");
+app.use(compression());
+
 // Set up mailgun to send email. body-parser is required for the json format.
 var mailgun = require('mailgun-js') ({
   apiKey: process.env.MAILGUN_API_KEY,
