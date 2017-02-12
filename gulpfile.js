@@ -53,7 +53,7 @@ gulp.task('minify-js', function() {
 // Minify HTML
 gulp.task('minify-html', function() {
   return gulp.src('client/home.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('client/'))
 })
