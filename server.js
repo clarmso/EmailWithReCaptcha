@@ -107,7 +107,7 @@ app.use(helmet.contentSecurityPolicy({
   browserSniff: false,
 
 }));
-app.use(helmet.noCache());
+//app.use(helmet.noCache());
 app.use(helmet.referrerPolicy());
 if ( process.env.NODE_ENV ) {
   app.enable('trust proxy');
