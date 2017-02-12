@@ -12,25 +12,25 @@
     <title>Clare So - Software Test Engineer</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous" async defer>
 
     <!-- Theme CSS -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+    <link href="css/freelancer.min.css" rel="stylesheet" async defer>
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Recaptcha for the contact form -->
-    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous" async defer>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      type="text/css"
+      integrity="sha256-W06dqlQ+p4tiUb4JuglQqcbFuswgF0qg6hiOWOXbQO8="
+      crossorigin="anonymous" async defer>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+      type="text/css"
+      integrity="sha256-xkv+r9OHTFag1pe788HG8FO/HOgAmhfOLp7xilHNOwI="
+      crossorigin="anonymous" async defer>
 
     <!-- favico.ico -->
     <link rel="icon" type="image/png" href="img/Clare.png">
@@ -68,13 +68,13 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+ 
     <!-- Header -->
     <header>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/Clare-2.png" alt="">
+                    <img class="img-responsive avatar" src="img/Clare.png" alt="">
                     <div class="intro-text">
                         <span class="name">Clare So</span>
                         <hr class="star-light">
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -105,7 +105,7 @@
                         <img src="img/portfolio/WhereAmI.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -113,16 +113,6 @@
                             </div>
                         </div>
                         <img src="img/portfolio/Website.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/circus.png" class="img-responsive" alt="">
                     </a>
                 </div>
             </div>
@@ -140,8 +130,6 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -177,6 +165,7 @@
                 </div>
             </div>
         </div>
+        <div id="map"></div>
     </section>
 
     <!-- Footer -->
@@ -208,8 +197,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Clare So 2016.
-                        Bootstrap theme modified from <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a> created by <a href="https://startbootstrap.com">Start Bootstrap</a>..
+                        Copyright &copy; Clare So 2017.
+                    </div>
+                    <div class="col-lg-12">
+                        Bootstrap theme modified from <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a> created by <a href="https://startbootstrap.com">Start Bootstrap</a>.
+                      </div>
+                      <div class="col-lg-12">
+                        Google Map marker by <a href="http://handdrawngoods.com/">Hand-Drawn Goods</a> licensed by
+                          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons (Attribution 3.0 Unported)</a>.
+                      </div>
                     </div>
                 </div>
             </div>
@@ -241,7 +237,11 @@
                             <a href="https://psychic-boo.herokuapp.com/">
                               <img src="img/portfolio/WhereAmI.png" class="img-responsive img-centered" alt="">
                             </a>
-                            <p>A game that quizzes the players' geographic knowledge around the world.</p>
+                            <p>This is a game that quizzes the players' geographic knowledge around the world.
+                              I designed the game, collected the location data and compile the (supposingly
+                              funny 😄 but not offensive) memes.  This project was a part of the web development
+                              course offered by <a href="https://brainstation.io/">BrainStation</a>.
+                            </p>
                             <ul class="list-inline item-details">
                                 <li>Tech Stack:
                                   <strong>Node.js, React.js, Google Maps API, CSS/LESS, Gulp, Livereload
@@ -276,12 +276,17 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h2>Personal Website</h2>
+                            <h3>(Yes, you are looking at it right now!)</h3>
                             <hr class="star-primary">
                             <img src="img/portfolio/Website.png" class="img-responsive img-centered" alt="">
-                            <p>I took the <a href="https://startbootstrap.com/template-overviews/freelancer/">Template</a> and customize
-                              according to my needs.  In particular, I have reramp the backend of the "Contact Me" section to use
-                              Mailgun instead of the PHP program to send email.  Since numerous people in the forum is having
-                              issues with PHP, I plan to fork the repo and made my change available to others.</p>
+                            <p>I took this <a href="https://startbootstrap.com/template-overviews/freelancer/">template</a>
+                              and customize according to my needs.  In particular, I have reramped the backend of the
+                              "Contact Me" section: Intead of using the PHP program provided, I have written a solution
+                              using Node.js and Mailgun to send email.  In addition, I have set up reCAPTCHA on the form to
+                              mitigate abuse.  To improve the security, I have set up the server to use
+                              <a href="https://helmetjs.github.io/">helmet.js</a> including its Content Security Policy
+                              module.
+                            </p>
                             <ul class="list-inline item-details">
                                 <li>Tech Stack:
                                   <strong>Node.js, Express, CSS/LESS, Gulp, Livereload
@@ -292,7 +297,7 @@
                                   </strong>
                                 </li>
                                 <li>Date:
-                                    <strong>Fall 2016
+                                    <strong>Fall 2016 - Winter 2017
                                     </strong>
                                 </li>
                             </ul>
@@ -303,60 +308,45 @@
             </div>
         </div>
     </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="https://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="https://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="https://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/freelancer.min.js"></script>
-
 </body>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+  integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
+  crossorigin="anonymous" async></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous" async></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"
+  integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb"
+  crossorigin="anonymous" async></script>
+
+<!-- Contact Form JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqBootstrapValidation/1.3.7/jqBootstrapValidation.min.js"
+  integrity="sha384-EX+lUrnw4CIwqz9PXQwGXsAwZuRnhsxhNcEqYps5MKnIUmuWJEvd35DwPP1kKx/t"
+  crossorigin="anonymous" async></script>
+<script src="js/contact_me.js" async></script>
+
+<!-- Theme JavaScript -->
+<script src="js/freelancer.min.js" async></script>
+
+<!-- Recaptcha for the contact form -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Google Map -->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqnCh84tr5FIu4iQAutu2H5cqb9uNX2P4&callback=initMap">
+</script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 
 </html>
