@@ -28,7 +28,7 @@ var express_enforces_ssl = require('express-enforces-ssl');
 
 var helmet = require('helmet');
 app.use(helmet());
-app.use(helmet.referrerPolicy());
+//app.use(helmet.referrerPolicy());
 if ( process.env.NODE_ENV ) {
   app.enable('trust proxy');
   app.use(express_enforces_ssl());
