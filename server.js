@@ -26,8 +26,8 @@ recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY
 
 var express_enforces_ssl = require('express-enforces-ssl');
 
-var helmet = require('helmet');
-app.use(helmet());
+//var helmet = require('helmet');
+//app.use(helmet());
 //app.use(helmet.referrerPolicy());
 if ( process.env.NODE_ENV ) {
   app.enable('trust proxy');
