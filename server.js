@@ -15,14 +15,6 @@ app.use( bodyParser.urlencoded( { extended: true } ))
 
 // *** Security ***
 
-var express_enforces_ssl = require('express-enforces-ssl');
-// Do not use SSL in the localhost because there's no certificate there.
-/*
-if ( process.env.NODE_ENV ) {
-  app.enable('trust proxy');
-  app.use(express_enforces_ssl());
-}
-*/
 /*
 var helmet = require('helmet');
 app.use(helmet());
