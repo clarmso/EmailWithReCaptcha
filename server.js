@@ -30,7 +30,7 @@ app.use(helmet.referrerPolicy());
 */
 var cors = require('cors');
 var whitelist = [
-    'process.env.ALLOWED_ORIGIN'
+    process.env.ALLOWED_ORIGIN
 ];
 var corsOptions = {
     origin: function(origin, callback){
@@ -43,7 +43,6 @@ var corsOptions = {
     },
     methods: "POST"
 };
-app.use(cors(corsOptions));
 
 
 // *** Mailgun ***
@@ -60,7 +59,7 @@ var recaptcha = require('express-recaptcha');
 recaptcha.init( process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY );
 
 
-app.post('/mail', recaptcha.middleware.verify, function(req, res) {
+app.post('/mail', [recaptcha.middleware.verify, cors(corsOptions)], function(req, res) {
 
   console.log("Received data:");
   console.log(req.body);
@@ -89,6 +88,10 @@ app.post('/mail', recaptcha.middleware.verify, function(req, res) {
     });
   }
 });
+
+app.get('/cors', cors(corsOptions), function(req, res) {
+    res.send('I am CORS alive! :)');
+})
 
 app.get('/', function(req, res) {
     res.send('I am alive! :)');
