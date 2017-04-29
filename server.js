@@ -21,7 +21,7 @@ if ( process.env.NODE_ENV ) {
   app.enable('trust proxy');
   app.use(express_enforces_ssl());
 }
-
+/*
 var helmet = require('helmet');
 app.use(helmet());
 app.use(helmet.referrerPolicy());
@@ -42,7 +42,7 @@ var corsOptions = {
     methods: "POST"
 };
 app.use(cors(corsOptions));
-
+*/
 
 // *** Mailgun ***
 
