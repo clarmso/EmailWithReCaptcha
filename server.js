@@ -28,7 +28,7 @@ app.use(helmet.referrerPolicy());
 */
 var cors = require('cors');
 var whitelist = [
-    process.env.ALLOWED_ORIGIN,
+    'http://localhost:5000'
 ];
 var corsOptions = {
     origin: function(origin, callback){
