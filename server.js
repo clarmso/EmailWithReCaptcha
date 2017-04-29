@@ -88,5 +88,9 @@ app.post('/mail', recaptcha.middleware.verify, function(req, res) {
   }
 });
 
+app.get('/', function(req, res) {
+    res.send('I am alive! :)');
+})
+
 //Turn on the web server listening on a specific port
 app.listen( process.env.PORT );
