@@ -15,11 +15,9 @@ app.use( bodyParser.urlencoded( { extended: true } ))
 
 // *** Security ***
 
-/*
 var helmet = require('helmet');
 app.use(helmet());
-app.use(helmet.referrerPolicy());
-*/
+
 var cors = require('cors');
 var whitelist = [
     process.env.ALLOWED_ORIGIN
