@@ -20,7 +20,8 @@ app.use(helmet());
 
 var cors = require('cors');
 var whitelist = [
-    process.env.ALLOWED_ORIGIN
+    process.env.ALLOWED_ORIGIN,
+    process.env.ALTERNATE_ALLOWED_ORIGIN
 ];
 var corsOptions = {
     origin: function(origin, callback){
