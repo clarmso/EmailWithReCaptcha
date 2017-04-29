@@ -25,7 +25,7 @@ if ( process.env.NODE_ENV ) {
 var helmet = require('helmet');
 app.use(helmet());
 app.use(helmet.referrerPolicy());
-
+*/
 var cors = require('cors');
 var whitelist = [
     process.env.ALLOWED_ORIGIN,
@@ -42,7 +42,7 @@ var corsOptions = {
     methods: "POST"
 };
 app.use(cors(corsOptions));
-*/
+
 
 // *** Mailgun ***
 
