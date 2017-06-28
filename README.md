@@ -1,7 +1,8 @@
 # Mailgun email REST API endpoint with reCAPTCHA
 
-I wrote this server to send email to myself from my homepage's contact form.  This endpoint is implemented as an REST 
-API endpoint.  My page sends an AJAX request to this endpoint.  It is written with the following in mind:
+I wrote this server to send email to myself from my homepage's contact form.  
+This endpoint is implemented as an REST API endpoint.  My page sends an AJAX 
+request to this endpoint.  It is written with the following in mind:
 * My email address is not exposed.
 * My Mailgun API is not exposed in the AJAX call.
 * reCAPTCHA is used to mitigate abuse.
@@ -10,32 +11,45 @@ API endpoint.  My page sends an AJAX request to this endpoint.  It is written wi
 * Must run SSL.
 * FREE :)
 
-I have considered using the free tier of the following API, but none satisfies all of the above.
+I have considered using the free tier of the following API, but none satisfies 
+all of the above.
 * formspree.io (Email exposed)
 * Sendgrid (Not free)
 * Mailgun (API key exposed)
 * Own SMTP/IMAP server (SPF record?)
+* Google Forms (Ugly)
 
 ## Deploying the Endpoint
 
 ### Node.js
 
-Yes, Node.js it is.
+Yes, Node.js it is.  I have Node 6.10.2 running.  It was first worked on under
+Node 4.x.  If nothing goes wrong, it should work under other versions of Node.
 
 ### Get a Heroku Account
-The instructions are specific to Heroku.  The environment variables are Heroku-specific.  With some treaking, you may get 
-the REST API endpoint to work in other services that can host a Node.js environemnt.
+The instructions are specific to Heroku.  The environment variables are 
+Heroku-specific.  With some treaking, you may get the REST API endpoint to 
+work in other services that can host a Node.js environemnt.
 
 ### Get a Mailgun API Key and Domain
 
-Sign up for a free Mailgun account.  If you expect only a few people per month would contact you using the contact form,
-the free tier should be more than enough.  Create a new sandbox domain.  Note the following two pieces of information after 
-signing up: *API key* and *domain name*.  They can be found in the Mailgun's dashboard.
+Sign up for a free Mailgun account.  If you expect only a few people per 
+month would contact you using the contact form, the free tier should be more 
+than enough.  Create a new sandbox domain.  Note the following two pieces of 
+information after signing up: *API key* and *domain name*.  They can be found 
+in the Mailgun's dashboard.
 
-Optional: You may verify if the domain and API key are working by sending yourself an email using curl: 
+Optional: You may verify if the domain and API key are working by sending 
+yourself an email using curl: 
 https://documentation.mailgun.com/en/latest/quickstart-sending.html#send-via-api
 
-### Get a ReCaptcha Site Key Pair
+### Get a reCaptcha Site Key Pair
+
+Get a pair of reCaptcha keys from Google: https://www.google.com/recaptcha/.
+It does not really matter if the type is reCAPTCHA v2 or Invisible reCAPTCHA.
+I worked on the endpoint before the invisible one became available to the
+public.  Eventually, I started to use the invisible reCAPTCHA instead of 
+reCAPTCHA v2.  That said, the endpoint should work for both versions.
 
 ### Client
 
