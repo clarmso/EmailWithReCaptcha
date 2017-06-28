@@ -54,3 +54,16 @@ reCAPTCHA v2.  That said, the endpoint should work for both versions.
 ### Client
 
 ### Server
+
+Under the Settings > Config Variables, add the following Config Vars:
+* ALLOWED_ORIGIN - The URL of your contact page.
+* ALTERNATE_ALLOWED_ORIGIN - Another URL of your contact page.  Maybe localhost for testing.
+* EMAIL - The "to" field of the emails.
+* MAILGUN_API_KEY - API key from Mailgun.
+* MAILGUN_DOMAIN - Domain name of the particular API key from Mailgun.
+* RECAPTCHA_SECRET_KEY - Secret key from reCAPTCHA.
+* RECAPTCHA_SITE_KEY - Site key from reCAPTCHA.  This is the one to be included
+  in the client-side.
+
+Deploy to Heroku and you should be all set! :) (I asked Heroku to deploy
+automatically from my GitHub repo.)
