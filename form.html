@@ -1,0 +1,46 @@
+<html>
+   <head>
+      <title>Example Contact Form</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+      <!-- jQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-- Recaptcha for the contact form -->
+      <script src="https://www.google.com/recaptcha/api.js"></script>
+      <script>
+      function onSubmit() {
+         console.log("onSubmit called");
+         $.ajax({
+                url:'http://localhost:9999/mail',
+                method: "POST",
+                data: {
+                    from: $('input#email').val(),
+                    subject: 'You have a message from ' + $('input#name').val(),
+                    text: $('textarea#message').val(),
+                    'g-recaptcha-response': grecaptcha.getResponse()
+                },
+                dataType: "json",
+                cache: false,
+                success: function() {
+                   alert('Your message has been sent.');
+                   grecaptcha.reset();
+                },
+                error: function(res, error) {
+                   alert('Uh oh!! :(');
+                   grecaptcha.reset();
+                },
+            });
+         }
+      </script>
+   </head>
+   <body>
+      <form id="contactForm">
+         <label>Name</label>
+         <input id="name" type="text" class="u-full-width" placeholder="Luke Skywalker"/>
+         <label>Email Address</label>
+         <input id="email" type="email" class="u-full-width" placeholder="luke@skywalker.com"/>
+         <label>Message</label>
+         <textarea id="message" class="u-full-width" placeholder="Hi daddy …"></textarea>
+         <button class="g-recaptcha button-primary" data-sitekey="6LfMih8UAAAAAG7hiD_3kmRgxvJiWT_FyVEKcWMP" data-badge="inline" data-callback="onSubmit">Send</button>
+      </form>
+   </body>
+</html>

@@ -88,5 +88,9 @@ app.get('/', function(req, res) {
     res.send('I am alive! :)');
 })
 
+app.get('/test', function(req, res) {
+   res.sendFile(__dirname + '/form.html');
+})
+
 //Turn on the web server listening on a specific port
 app.listen( process.env.PORT );
