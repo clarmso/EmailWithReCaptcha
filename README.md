@@ -95,3 +95,10 @@ browser, you should get an "Internal Server Error" message.  (Note that such a
 This endpoint displays the test form "form.html".  It should look like the following:
 
 ![Screenshot of sample form](https://github.com/clarmso/EmailWithReCaptcha/blob/master/SampleForm.png)
+
+### /mail
+
+This is the endpoint that sends the email.  An AJAX call to this endpoint must
+include the following fields: from, subject, text and g-recaptcha-response.
+The g-recaptcha-response can be fetched using the reCAPTCHA's API.  Please
+see form.html for an example.
