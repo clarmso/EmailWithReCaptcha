@@ -10,7 +10,7 @@
       function onSubmit() {
          console.log("onSubmit called");
          $.ajax({
-                url:'http://localhost:9999/mail',
+                url:'http://<Your host>/mail',
                 method: "POST",
                 data: {
                     from: $('input#email').val(),
