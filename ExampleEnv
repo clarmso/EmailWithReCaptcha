@@ -1,0 +1,8 @@
+# The following is to be included in the .env file:
+ALLOWED_ORIGIN=<Your website's domain>
+ALTERNATE_ALLOWED_ORIGIN=<Staging site's domain or localhost>
+EMAIL=<Destination of the email>
+MAILGUN_API_KEY=<API key from Mailgun>
+MAILGUN_DOMAIN=<Mailgun domain.  Usually in the format of "sandbox...mailgun.org">
+RECAPTCHA_SECRET_KEY=<reCAPTCHA secret key>
+RECAPTCHA_SITE_KEY=<reCAPTCHA site key>
