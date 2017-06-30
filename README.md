@@ -93,3 +93,5 @@ browser, you should get an "Internal Server Error" message.  (Note that such a
 ### /test
 
 This endpoint displays the test form "form.html".  It should look like the following:
+
+![Screenshot of sample form](https://github.com/clarmso/EmailWithReCaptcha/blob/master/SampleForm.png)
