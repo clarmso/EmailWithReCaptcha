@@ -72,7 +72,7 @@ Under the Settings > Config Variables, add the following Config Vars:
   in the client-side.
 
 If you are testing locally, you should include the config vars above in a
-.env file.  Please find the sample .env file "ExampleEnv".
+.env file.  Please find the sample .env file [ExampleEnv](https://github.com/clarmso/EmailWithReCaptcha/blob/master/ExampleEnv).
 
 Deploy to Heroku and you should be all set!
 
@@ -102,3 +102,7 @@ This is the endpoint that sends the email.  An AJAX call to this endpoint must
 include the following fields: from, subject, text and g-recaptcha-response.
 The g-recaptcha-response can be fetched using the reCAPTCHA's API.  Please
 see form.html for an example.
+
+## License
+
+This repository is licensed under [MIT license](https://github.com/clarmso/EmailWithReCaptcha/blob/master/LICENSE).
